@@ -10,15 +10,18 @@ Run: python3 -m http.server
   <body>
     <a-scene>
       <a-assets>
-        <img id="my-texture" src="webFriendlyMe2.jpg">
+        <!--img id="my-texture" src="webFriendlyMe2.jpg"-->
         <audio id="day1dream1" src="20200421_dream1.mp3" preload="auto"></audio>
       </a-assets>
 
 
-        <a-sphere position="0.5714285714 0 3.958973274" rotation="45 45 45"
+        <a-entity
+          geometry="primitave: sphere"
+          position="0.5714285714 0 3.958973274"
+          rotation="45 45 45"
           material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
-          sound="src: #day1dream1; autoplay: true; loop: true; volume: 10"
-        ></a-sphere>
+          sound="src: #day1dream1; autoplay: true; loop: true; volume: 1"
+        ></a-entity>
 
 
         <a-sphere position="1.142857143 0 -3.83325939" rotation="45 45 45"
