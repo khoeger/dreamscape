@@ -47,12 +47,11 @@ Run: python3 -m http.server
       </a-assets>
 
         <a-sphere
+          id="dream1"
           position="0.5714285714 0 3.958973274"
           rotation="45 45 45"
           material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
-        >
-        sound.play();
-        </a-sphere>
+        ></a-sphere>
 
 
         <!--a-sphere position="1.142857143 0 -3.83325939" rotation="45 45 45"
@@ -101,11 +100,39 @@ Run: python3 -m http.server
 
       var splash = document.querySelector('#splash');
       var vrButton = document.querySelector('#vr');
-      
+
         var enter = function () {
           splash.parentNode.removeChild(splash);
         }
         vrButton.addEventListener('click', enter);
+
+        // --- Start accessing DOM elements
+        var dreams = ['dream1'];
+
+        dreams.forEach(
+          function(dream){
+            window[dream] = document.getElementById(dream);
+          }
+        );
+
+        var Dream = function(options){
+          var self = this;
+
+          self.sounds = [];
+
+          self._spriteMap = options.spriteMap;
+          self._sprite = options.sprite;
+          self.setupListeners();
+
+          // audio sprite definition
+          self.sound = new Howl({
+            src: options.src,
+            sprte: options.sprite
+          });
+          // Begin progress???
+        };
+
+        
 
       </script>
 
