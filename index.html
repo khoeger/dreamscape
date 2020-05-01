@@ -3,9 +3,11 @@ https://aframe.io/docs/1.0.0/introduction/
 
 Run: python3 -m http.server
 -->
+<!doctype html>
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     <script src="/howler.js"></script>
     <script>
       var sound = new Howl({
@@ -15,6 +17,27 @@ Run: python3 -m http.server
         volume: 0.7,
       });
     </script>
+    <style type="text/css">
+      #splash {
+      position:absolute;
+      height:100vh;
+      width:100vw;
+      overflow:hidden;
+      color: white;
+      background : rgba(0,0,0,0.6);
+      top:0;
+      left:0;
+      text-align: center;
+    }
+    #vr {
+        display: inline-block;
+        border : 4px solid white;
+        border-radius : 1rem;
+        padding : 1rem;
+        margin-top: 3rem;
+        cursor: pointer;
+    }
+    </style>
   </head>
   <body>
     <a-scene>
@@ -66,5 +89,26 @@ Run: python3 -m http.server
 
       <a-sky color="#000000"></a-sky>
     </a-scene>
+
+    <div id="splash">
+      <p>This splash screen with button is is only needed to trigger a click</p>
+      <p>from the user to be able to start audio at all.</p>
+      <p></p>
+      <p id="vr">GO!</p>
+    </div>
+
+    var splash = document.querySelector('#splash');
+    var vrButton = document.querySelector('#vr');
+
+    <script type="text/javascript">
+
+        var splash = document.querySelector('#splash');
+        var enter = function () {
+          splash.parentNode.removeChild(splash);
+        }
+        vrButton.addEventListener('click', enter);
+
+      </script>
+
   </body>
 </html>
