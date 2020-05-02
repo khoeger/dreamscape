@@ -108,6 +108,14 @@ Run: python3 -m http.server -->
         }
         vrButton.addEventListener('click', enter);
 
+        var position_dream1 = document.getElementById("dream1").getAttribute('position');
+        console.log(position_dream1);
+        console.log(typeof Object.values(position_dream1)[0]);
+        console.log(Object.values(position_dream1)[0]);
+        sound.pos(Object.values(position_dream1)[0],
+                  Object.values(position_dream1)[1],
+                  Object.values(position_dream1)[2]
+        );
         sound.play();
 
         /*
