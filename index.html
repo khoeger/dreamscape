@@ -1,21 +1,22 @@
+<!DOCTYPE html>
+
 <!-- About A frame
 https://aframe.io/docs/1.0.0/introduction/
 
 Major reuse of code from https://glitch.com/~aframe-howler
 
-Run: python3 -m http.server
--->
-<!doctype html>
+Run: python3 -m http.server -->
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script src="/howler.js"></script>
+    <!--script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script-->
+    <script src="/howler.js/dist/howler.js"></script>
+    <script src="howler.js/dist/howler.spatial.min.js"></script>
     <script>
       var sound = new Howl({
         src: ['20200421_dream1.mp3'],
-        autoplay: true,
-        loop: true,
+        //autoplay: true,
+        //loop: true,
         volume: 0.7,
       });
     </script>
@@ -42,10 +43,11 @@ Run: python3 -m http.server
     </style>
   </head>
   <body>
+
     <a-scene>
       <a-assets>
         <!--img id="my-texture" src="webFriendlyMe2.jpg"-->
-        <audio id="day1dream1" src="20200421_dream1.mp3" preload="auto"></audio>
+        <!--audio id="day1dream1" src="20200421_dream1.mp3" preload="auto"></audio-->
       </a-assets>
 
         <a-sphere
@@ -92,10 +94,8 @@ Run: python3 -m http.server
     </a-scene>
 
     <div id="splash">
-      <p>This splash screen with button is is only needed to trigger a click</p>
-      <p>from the user to be able to start audio at all.</p>
-      <p></p>
-      <p id="vr">GO!</p>
+      <p>Sounds will start after you click OK.</p>
+      <p id="vr">OK</p>
     </div>
 
     <script type="text/javascript">
@@ -107,6 +107,10 @@ Run: python3 -m http.server
           splash.parentNode.removeChild(splash);
         }
         vrButton.addEventListener('click', enter);
+
+        sound.play();
+
+        /*
 
         // --- Start accessing DOM elements
         var dreams = ['dream1'];
@@ -132,11 +136,11 @@ Run: python3 -m http.server
             sprite: options.sprite
           });
           // Begin progress???
-        };
-
+        }; */
+       /*
         Sprite.prototype = {
 
-          /* set up listeners for each sprite's click area */
+          //set up listeners for each sprite's click area
           setupListeners: function() {
             var self = this;
             var keys = Object.keys( self._spriteMap);
@@ -148,7 +152,7 @@ Run: python3 -m http.server
             });
           },
 
-          /* play sprite when clicked, and track progress */
+          // play sprite when clicked, and track progress
           play: function(key) {
             var self = this;
             var sprite = self._spriteMap[key];
@@ -174,7 +178,7 @@ Run: python3 -m http.server
             }, id);
           },
 
-          /* step within request animation frame updating playback position */
+          // step within request animation frame updating playback position
           step: function(){
             var self = this;
             // example following has lots of comments here,
@@ -192,7 +196,7 @@ Run: python3 -m http.server
           spriteMap: {
             dream1: 'one',
           }
-        });
+        }); */
 
 
       </script>
