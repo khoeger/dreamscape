@@ -55,6 +55,12 @@ Run: python3 -m http.server -->
         loop: true,
         volume: 0.7,
       });
+      var sound8 = new Howl({
+        src: ['20200427_dream.mp3'],
+        //autoplay: true,
+        loop: true,
+        volume: 0.7,
+      });
     </script>
     <style type="text/css">
       #splash {
@@ -144,6 +150,13 @@ Run: python3 -m http.server -->
           material="color: #4CC3D9 ; transparent: true ; opacity: 0.10"
         ></a-sphere>
 
+        <a-sphere
+          id="dream8"
+          position="1.142857143 0 3.83325939"
+          rotation="45 45 45"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
+        ></a-sphere>
+
 
       <a-sky color="#000000"></a-sky>
     </a-scene>
@@ -170,6 +183,7 @@ Run: python3 -m http.server -->
         var position_dream5 = document.getElementById("dream5").getAttribute('position');
         var position_dream6 = document.getElementById("dream6").getAttribute('position');
         var position_dream7 = document.getElementById("dream7").getAttribute('position');
+        var position_dream8 = document.getElementById("dream8").getAttribute('position');
 
 
 
@@ -201,6 +215,11 @@ Run: python3 -m http.server -->
                   Object.values(position_dream7)[1],
                   Object.values(position_dream7)[2]
         );
+        sound8.pos(Object.values(position_dream8)[0],
+                  Object.values(position_dream8)[1],
+                  Object.values(position_dream8)[2]
+        );
+
 
 
         sound1.play();
@@ -210,6 +229,8 @@ Run: python3 -m http.server -->
         sound5.play();
         sound6.play();
         sound7.play();
+        sound8.play();
+
 
         /*
 
