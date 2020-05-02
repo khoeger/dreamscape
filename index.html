@@ -1,6 +1,8 @@
 <!-- About A frame
 https://aframe.io/docs/1.0.0/introduction/
 
+Major reuse of code from https://glitch.com/~aframe-howler
+
 Run: python3 -m http.server
 -->
 <!doctype html>
@@ -127,12 +129,71 @@ Run: python3 -m http.server
           // audio sprite definition
           self.sound = new Howl({
             src: options.src,
-            sprte: options.sprite
+            sprite: options.sprite
           });
           // Begin progress???
         };
 
-        
+        Sprite.prototype = {
+
+          /* set up listeners for each sprite's click area */
+          setupListeners: function() {
+            var self = this;
+            var keys = Object.keys( self._spriteMap);
+
+            keys.forEach(function(key){
+              window[key].addEventListener( 'click', function(){
+                self.play(key);
+              }, false);
+            });
+          },
+
+          /* play sprite when clicked, and track progress */
+          play: function(key) {
+            var self = this;
+            var sprite = self._spriteMap[key];
+
+            // play sprite sound and capture it's id
+            var id = self.sound.play(sprite);
+
+            // create progress element and begin tracking it
+            var elm = document.createElement('div');
+            elm.className = 'progress';
+            elm.id = id;
+            elm.dataset.sprite = sprite;
+            window[key].appendChild(elm);
+            self.sounds.push(elm);
+
+            // When sound is finished, remove progress element.
+            self.sound.once('end', function(){
+              var index = self.sounds.indexOf(elm);
+              if (index >= 0){
+                self.sounds.splice(index, 1);
+                windows[key].removeChild(elm);
+              }
+            }, id);
+          },
+
+          /* step within request animation frame updating playback position */
+          step: function(){
+            var self = this;
+            // example following has lots of comments here,
+            // not sure if section necessary yet
+          }
+        };
+
+        // Set up new sprite class & pass in options
+        var sprite = new Sprite({
+          src: ["20200421_dream1.mp3"];
+          // not sure about this part
+          sprite: {
+            one: [0, 450],
+          },
+          spriteMap: {
+            dream1: 'one',
+          }
+        });
+
 
       </script>
 
