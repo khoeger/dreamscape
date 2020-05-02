@@ -13,10 +13,22 @@ Run: python3 -m http.server -->
     <script src="/howler.js/dist/howler.js"></script>
     <script src="howler.js/dist/howler.spatial.min.js"></script>
     <script>
-      var sound = new Howl({
+      var sound1 = new Howl({
         src: ['20200421_dream1.mp3'],
         //autoplay: true,
-        //loop: true,
+        loop: true,
+        volume: 0.7,
+      });
+      var sound2 = new Howl({
+        src: ['20200421_dream2.mp3'],
+        //autoplay: true,
+        loop: true,
+        volume: 0.7,
+      });
+      var sound3 = new Howl({
+        src: ['20200422_dream1.mp3'],
+        //autoplay: true,
+        loop: true,
         volume: 0.7,
       });
     </script>
@@ -54,20 +66,26 @@ Run: python3 -m http.server -->
           id="dream1"
           position="0.5714285714 0 3.958973274"
           rotation="45 45 45"
-          material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
         ></a-sphere>
 
 
-        <!--a-sphere position="1.142857143 0 -3.83325939" rotation="45 45 45"
-          material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
+        <a-sphere
+          id="dream2"
+          position="1.142857143 0 -3.83325939"
+          rotation="45 45 45"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
           sound="src: #monolog; autoplay: true; loop: true; volume: 10"
-        ></a-sphere-->
+        ></a-sphere>
 
 
-        <!--a-sphere position="-1.714285714 0 3.614031612" rotation="45 45 45"
-          material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
+        <a-sphere
+          id="dream3"
+          position="-1.714285714 0 3.614031612"
+          rotation="45 45 45"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
           sound="src: #monolog; autoplay: true; loop: true; volume: 10"
-        ></a-sphere-->
+        ></a-sphere>
 
         <!--a-sphere position="-2.285714286 0 -3.282607227" rotation="45 45 45"
           material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
@@ -109,14 +127,26 @@ Run: python3 -m http.server -->
         vrButton.addEventListener('click', enter);
 
         var position_dream1 = document.getElementById("dream1").getAttribute('position');
-        console.log(position_dream1);
-        console.log(typeof Object.values(position_dream1)[0]);
-        console.log(Object.values(position_dream1)[0]);
-        sound.pos(Object.values(position_dream1)[0],
+        var position_dream2 = document.getElementById("dream2").getAttribute('position');
+        var position_dream3 = document.getElementById("dream3").getAttribute('position');
+
+
+        sound1.pos(Object.values(position_dream1)[0],
                   Object.values(position_dream1)[1],
                   Object.values(position_dream1)[2]
         );
-        sound.play();
+        sound2.pos(Object.values(position_dream2)[0],
+                  Object.values(position_dream2)[1],
+                  Object.values(position_dream2)[2]
+        );
+        sound3.pos(Object.values(position_dream3)[0],
+                  Object.values(position_dream3)[1],
+                  Object.values(position_dream3)[2]
+        );
+
+        sound1.play();
+        sound2.play();
+        sound3.play();
 
         /*
 
