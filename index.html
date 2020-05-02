@@ -49,6 +49,12 @@ Run: python3 -m http.server -->
         loop: true,
         volume: 0.7,
       });
+      var sound7 = new Howl({
+        src: ['20200425_dream.mp3'],
+        //autoplay: true,
+        loop: true,
+        volume: 0.7,
+      });
     </script>
     <style type="text/css">
       #splash {
@@ -124,10 +130,19 @@ Run: python3 -m http.server -->
           material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
         ></a-sphere>
 
-        <!--a-sphere position="-4 0 0" rotation="45 45 45"
-          material="color: #4CC3D9 ; transparent: true ; opacity: 0.5"
-          sound="src: #monolog; autoplay: true; loop: true; volume: 10"
-        ></a-sphere-->
+        <!-- skipped space in honor of forgotten dreams of night of 25 -->
+        <a-sphere
+          id="dream7"
+          position="-4 0 0"
+          rotation="45 45 45"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.15"
+        ></a-sphere>
+
+        <a-sphere
+          position="3.428571429 0 -3.958973274"
+          rotation="45 45 45"
+          material="color: #4CC3D9 ; transparent: true ; opacity: 0.10"
+        ></a-sphere>
 
 
       <a-sky color="#000000"></a-sky>
@@ -153,7 +168,9 @@ Run: python3 -m http.server -->
         var position_dream3 = document.getElementById("dream3").getAttribute('position');
         var position_dream4 = document.getElementById("dream4").getAttribute('position');
         var position_dream5 = document.getElementById("dream5").getAttribute('position');
-        var position_dream6 = document.getElementById("dream5").getAttribute('position');
+        var position_dream6 = document.getElementById("dream6").getAttribute('position');
+        var position_dream7 = document.getElementById("dream7").getAttribute('position');
+
 
 
         sound1.pos(Object.values(position_dream1)[0],
@@ -180,6 +197,10 @@ Run: python3 -m http.server -->
                   Object.values(position_dream6)[1],
                   Object.values(position_dream6)[2]
         );
+        sound7.pos(Object.values(position_dream7)[0],
+                  Object.values(position_dream7)[1],
+                  Object.values(position_dream7)[2]
+        );
 
 
         sound1.play();
@@ -188,6 +209,7 @@ Run: python3 -m http.server -->
         sound4.play();
         sound5.play();
         sound6.play();
+        sound7.play();
 
         /*
 
